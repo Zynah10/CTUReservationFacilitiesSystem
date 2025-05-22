@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTU Facilities Reservation</title>
+  <link rel="stylesheet" href="/src/app/reservation/reservation.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <img src="./assets/logoCTU.png" alt="CTU Logo" />
+        <h1>CTU Facilities Reservation</h1>
+      </div>
+      <nav class="nav-links">
+        <a routerLink="/homepage" class="hover3">Home</a>
+        <a routerLink="/reservationlist" class="hover3">Bookings</a>
+        <a (click)="scrollToSection('reserve')" class="hover1">Reserve</a>
+        <a [routerLink]="['/homepage']" fragment="amenities" class="hover4">Services</a>
+       <a [routerLink]="['/homepage']" fragment="contact" class="hover5">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Booking Section -->
+ <section id="reserve">
+  <div class="container">
+    <h2>Facilities Reservation</h2>
+    <p>Please fill in the form below to reserve a facility.</p>
+
+    <form (ngSubmit)="onSubmit()" #reservationForm="ngForm">
+      <div class="form-row">
+        <div>
+          <label for="firstName">First Name</label>
+          <input
+            id="firstName"
+            type="text"
+            [(ngModel)]="firstName"
+            name="firstName"
+            placeholder="E.g. John"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            type="text"
+            [(ngModel)]="lastName"
+            name="lastName"
+            placeholder="E.g. Doe"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="mobile">Mobile</label>
+          <input
+            id="mobile"
+            type="text"
+            [(ngModel)]="mobile"
+            name="mobile"
+            placeholder="E.g. +63 900 123 4567"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="E.g. email@example.com"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="reservationIn">Reservation-In</label>
+          <input
+            id="reservationIn"
+            type="date"
+            [(ngModel)]="reservationIn"
+            name="reservationIn"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="reservationOut">Reservation-Out</label>
+          <input
+            id="reservationOut"
+            type="date"
+            [(ngModel)]="reservationOut"
+            name="reservationOut"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="userType">User Type</label>
+        <select
+          id="userType"
+          [(ngModel)]="userType"
+          name="userType"
+          class="form-control"
+          required
+        >
+          <option value="" disabled selected>Select user type</option>
+          <option>Student</option>
+          <option>Faculty and Staff</option>
+          <option>Guests</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="facility">Facility</label>
+        <select
+          id="facility"
+          [(ngModel)]="facility"
+          name="facility"
+          class="form-control"
+          required
+        >
+          <option value="" disabled selected>Select a facility</option>
+          <option>Gymnasium Stage</option>
+          <option>Gymnasium Ground</option>
+          <option>Gymnasium Entire</option>
+          <option>Library</option>
+          <option>Smartroom</option>
+          <option>BSIT Computer Laboratory 1</option>
+          <option>BSIT Computer Laboratory 2</option>
+          <option>BSHM Laboratory 1</option>
+          <option>BSHM Laboratory 2</option>
+          <option>BSIE Laboratory 1</option>
+        </select>
+      </div>
+
+      <div class="button">
+        <button type="submit" [disabled]="!reservationForm.form.valid">
+          Reserve Now
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    <p>© 2025 CTU Daanbantayan. All Rights Reserved.</p>
+    <p>Designed by HTML Codex</p>
+  </footer>
+
+</body>
+</html>

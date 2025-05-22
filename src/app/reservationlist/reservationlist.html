@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTU Facilities Reservation</title>
+  <link rel="stylesheet" href="/src/app/reservationlist/reservationlist.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+ <header class="navbar">
+  <div class="nav-left">
+    <div class="logo">
+      <img src="./assets/logoCTU.png" alt="CTU Logo" />
+      <h1>CTU Facilities Reservation</h1>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/homepage" class="hover3">Home</a>
+      <a (click)="scrollToSection('reservationlist')" class="hover1">Bookings</a>
+      <a routerLink="/reservation" class="hover3">Reserve</a>
+      <a [routerLink]="['/homepage']" fragment="amenities" class="hover4">Services</a>
+      <a [routerLink]="['/homepage']" fragment="contact" class="hover5">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="reservation-list" id="reservationlist">
+  <h2>Your Reservations</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Facility</th>
+        <th>Reserved By</th>
+        <th>User Type</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations; let i = index">
+        <td>{{ reservation.facility }}</td>
+        <td>{{ reservation.firstName }} {{ reservation.lastName }}</td>
+        <td>{{ reservation.userType }}</td>
+        <td>{{ reservation.reservationIn }}</td>
+        <td>{{ reservation.reservationOut }}</td>
+        <td>{{ reservation.status }}</td>
+        <td>
+          <ng-container *ngIf="reservation.status !== 'approved'; else approvedMsg">
+            <button class="btn btn-edit" (click)="editReservation(i)">Edit</button>
+            <button class="btn btn-cancel" (click)="cancelReservation(i)">Cancel</button>
+          </ng-container>
+          <ng-template #approvedMsg>
+            <span style="color: green;">Approved — Cannot Edit or Cancel</span>
+          </ng-template>
+        </td>
+      </tr>
+      <tr *ngIf="reservations.length === 0">
+        <td colspan="7" style="text-align:center;">No reservations found.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="goBack()" class="btn-back">← Back to Home</button>
+</section>
+ 
+</body>
+</html>

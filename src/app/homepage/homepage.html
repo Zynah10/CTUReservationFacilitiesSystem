@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTU Facilities Reservation</title>
+  <link rel="stylesheet" href="homepage.css" />
+  <style>
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <img src="./assets/logoCTU.png" alt="CTU Logo" />
+        <h1>CTU Facilities Reservation</h1>
+      </div>
+      <nav class="nav-links">
+  <a (click)="scrollToSection('home')" class="hover1">Home</a>
+  <a routerLink="/reservationlist" class="hover2">Bookings</a> 
+  <a routerLink="/reservation" class="hover3">Reserve</a>
+  <a (click)="scrollToSection('amenities')" class="hover4">Services</a>
+  <a (click)="scrollToSection('contact')" class="hover5">Contact</a>
+</nav>
+    </div>
+    <div class="nav-right">
+      <button routerLink="/login" class="btn-outline">Logout</button>
+    </div>
+  </header>
+  
+  <!-- Hero Section with Slideshow -->
+<section id="home" class="hero">
+  <div class="slideshow-container">
+    <div class="slide fade" #slide>
+      <img src="./assets/1.jfif" alt="Facility Slide 1" />
+    </div>
+    <div class="slide fade" #slide>
+      <img src="./assets/2.jfif" alt="Facility Slide 2" />
+    </div>
+    <div class="slide fade" #slide>
+      <img src="./assets/3.jfif" alt="Facility Slide 3" />
+    </div>
+  </div>
+
+  <div class="dot-container">
+    <span class="dot" #dot (click)="currentSlide(1)"></span>
+    <span class="dot" #dot (click)="currentSlide(2)"></span>
+    <span class="dot" #dot (click)="currentSlide(3)"></span>
+  </div>
+</section>
+<hr />
+
+
+
+  <!-- Welcome Section -->
+  <section id="welcome">
+    <div class="container">
+      <h3>Welcome to CTU Facilities Reservation</h3>
+      <p>
+        We warmly welcome you to the Cebu Technological University Facilities Reservation System. This platform enables students, faculty, and staff to conveniently reserve campus resources such as classrooms, laboratories, and other facilities. Please follow reservation guidelines for a smooth and efficient booking experience.
+      </p>
+      <a routerLink="/reservation" class="btn-primary">Reserve Now</a>
+    </div>
+  </section>
+
+  <!-- Amenities & Services Section -->
+  <section id="amenities" class="home-amenities">
+    <div class="container">
+      <div class="section-header">
+        <h2>Amenities & Services</h2>
+        <p>Our campus provides a variety of facilities to support your academic and organizational needs. Each amenity is maintained to ensure convenience, comfort, and productivity for all users.</p>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 icons">
+          <i class="icon icon-1"></i>
+          <h3>Computer</h3>
+          <p>Access to computers for academic research, coursework, and digital learning activities.</p>
+        </div>
+        <div class="col-md-3 col-sm-6 icons">
+          <i class="icon icon-2"></i>
+          <h3>Kitchen</h3>
+          <p>Shared kitchen space available for event catering, food preparation, and culinary activities.</p>
+        </div>
+        <div class="col-md-3 col-sm-6 icons">
+          <i class="icon icon-3"></i>
+          <h3>Conference Room</h3>
+          <p>Modern meeting rooms equipped for presentations, discussions, and administrative use.</p>
+        </div>
+        <div class="col-md-3 col-sm-6 icons">
+          <i class="icon icon-4"></i>
+          <h3>TV</h3>
+          <p>Television screens available for multimedia presentations, announcements, and educational use.</p>
+        </div>
+        <div class="col-md-3 col-sm-6 icons">
+          <i class="icon icon-5"></i>
+          <h3>WiFi</h3>
+          <p>Reliable internet connectivity across campus to support research and communication.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="contactcontainer">
+      <h2>Contact Us 📞</h2>
+      <div class="contact-info">
+        <p>Have questions or need assistance?<br>We're here to help!</p>
+        <ul>
+          <li><strong>Campus Location:</strong> Agujo, Daanbantayan, Cebu</li>
+          <li><strong>Email:</strong> supportctufacilities</li>
+          <li><strong>Phone:</strong> +63 000 0000 000x</li>
+        </ul>
+      </div>
+
+      <!-- Feedback Form -->
+     <form class="feedback-form" (ngSubmit)="submitFeedback()" #contactForm="ngForm">
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="feedbackData.name"
+    placeholder="Your Name"
+    required
+  />
+  <textarea
+    name="feedback"
+    [(ngModel)]="feedbackData.message"
+    placeholder="Your Feedback"
+    rows="4"
+    required
+  ></textarea>
+
+  <div class="form-buttons">
+    <button type="reset" class="cancel-btn">Cancel</button>
+    <button type="submit" class="send-btn">Send</button>
+  </div>
+</form>
+
+    </div>
+  </section>
+
+ <footer class="site-footer">
+  <div class="footer-wrapper">
+    <div class="footer-section brand">
+      <h2>CTU Facilities Reservation</h2>
+      <p>Your gateway to efficient campus facility booking at CTU Daanbantayan.</p>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Info</h3>
+      <p>Email: ctu.facility</p>
+      <p>Phone: +63 912 345 6789</p>
+      <p>Address: CTU Daanbantayan Campus, Cebu</p>
+    </div>
+
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><img src="facebook-icon.svg" alt="Facebook"></a>
+        <a href="#"><img src="twitter-icon.svg" alt="Twitter"></a>
+        <a href="#"><img src="instagram-icon.svg" alt="Instagram"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Cebu Technological University. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
